@@ -1,24 +1,22 @@
 import "./Show.css";
 
-function Show() {
+function Show(props) {
+  const { imageUrl, name, ReleasedOn, rating } = props;
+
   return (
     <div>
-      <img
-        className="show-img"
-        src="https://images.fandango.com/ImageRenderer/500/0/redesign/static/img/default_poster.png/0/images/masterrepository/Fandango/176739/Interstellar-Film.jpg"
-        alt="Intersteller"
-      ></img>
-      <h2 className="show-title"> Intersteller </h2>
+      <img className="show-img" src={imageUrl} alt="Intersteller"></img>
+      <h2 className="show-title"> {name} </h2>
       <p className="show-release">
         Released on :
         <span>
-          <b> November 5, 2014</b>
+          <b> {ReleasedOn}</b>
         </span>
       </p>
       <p className="show-rating">
         iMDB rating :{" "}
         <span>
-          <b>8.2/10</b>
+          <b>{rating}</b>
         </span>
       </p>
     </div>
