@@ -94,7 +94,10 @@ function Shows({ searchInput }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/shows");
+        const response = await Promise.all([
+          axios.get("http://localhost:5000/shows"),
+          axios.get("https://myshowsbackend.vercel.app/"),
+        ]);
         setShows(response.data);
       } catch (error) {
         console.error("Error fetching the shows data:", error);

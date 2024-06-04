@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const FillForm = () => {
   const [formData, setFormData] = useState({
@@ -14,9 +16,34 @@ const FillForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const { imageUrl, name, releasedOn, rating, details } = formData;
     console.log(formData);
+    try {
+      console.log("hi sewnding it to server1");
+      const { formData: responseData } = await axios.post("/fillform", {
+        imageUrl,
+        name,
+        releasedOn,
+        rating,
+        details,
+      });
+      if (responseData.error) {
+        toast.error(responseData.error);
+      } else {
+        setFormData({
+          imageUrl: "",
+          name: "",
+          releasedOn: "",
+          rating: "",
+          details: "",
+        });
+        toast.success(`success ${name} added to the list!`);
+      }
+    } catch (error) {
+      console.log("error at form!", error);
+    }
   };
 
   return (
