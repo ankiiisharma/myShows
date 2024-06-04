@@ -32,6 +32,7 @@ function Show(props) {
       <div className="flex items-center gap-2 mt-3">
         <Heart
           onClick={likeButton}
+          fill={count > 0 ? "red" : "white"}
           className="cursor-pointer hover:text-red-500 "
         />
         <span>{count}</span>
