@@ -3,7 +3,7 @@ import "./Show.css";
 import { useState } from "react";
 
 function Show(props) {
-  const { imageUrl, name, ReleasedOn, Rating } = props;
+  const { imageUrl, Name, ReleasedOn, Rating } = props;
 
   const [count, setCount] = useState(0);
 
@@ -17,11 +17,11 @@ function Show(props) {
       <img
         className="rounded w-full h-80 object-cover"
         src={imageUrl}
-        alt={name}
+        alt={Name}
       ></img>
       <h2 className="text-xl font-bold mt-3 underline decoration-sky-500 hover:underline-offset-4 cursor-pointer">
         {" "}
-        {name}{" "}
+        {Name}{" "}
       </h2>
       <p className="mt-2">
         Released on :

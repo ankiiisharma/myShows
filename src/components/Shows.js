@@ -83,10 +83,10 @@
 
 // export default Shows;
 
-import Show from "./Show";
-import "./Shows.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Show from "./Show";
+import "./Shows.css";
 
 function Shows({ searchInput }) {
   const [shows, setShows] = useState([]);
@@ -94,10 +94,7 @@ function Shows({ searchInput }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await Promise.all([
-          axios.get("http://localhost:5000/shows"),
-          axios.get("https://myshowsbackend.vercel.app/"),
-        ]);
+        const response = await axios.get("http://localhost:5000/shows");
         setShows(response.data);
       } catch (error) {
         console.error("Error fetching the shows data:", error);
@@ -107,8 +104,9 @@ function Shows({ searchInput }) {
     fetchData();
   }, []);
 
-  const filteredShows = shows.filter((show) =>
-    show.Name.toLowerCase().includes(searchInput.toLowerCase())
+  const filteredShows = shows.filter(
+    (show) =>
+      show.Name && show.Name.toLowerCase().includes(searchInput.toLowerCase())
   );
 
   return (
