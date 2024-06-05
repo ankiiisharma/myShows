@@ -3,7 +3,7 @@ import "./Show.css";
 import { useState } from "react";
 
 function Show(props) {
-  const { imageUrl, Name, ReleasedOn, Rating } = props;
+  const { imageUrl, Name, ReleasedOn, Rating, Details } = props;
 
   const [count, setCount] = useState(0);
 
@@ -15,7 +15,7 @@ function Show(props) {
   return (
     <div className="bg-gray-800 text-white p-5 rounded-lg">
       <img
-        className="rounded w-full h-80 object-cover"
+        className="rounded w-full h-90 object-cover"
         src={imageUrl}
         alt={Name}
       ></img>
@@ -42,6 +42,11 @@ function Show(props) {
         <span>
           <b> {Rating}</b>
         </span>
+      </p>
+      <p className="mt-2 text-xs text-slate-300">
+        {" "}
+        <h4 className="font-bold mb-2 text-white">About Movie:</h4>
+        {Details}`{" "}
       </p>
     </div>
   );

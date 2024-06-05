@@ -122,7 +122,7 @@ function Shows({ searchInput }) {
             Name={show.Name}
             Rating={show.Rating}
             ReleasedOn={show.ReleasedOn}
-            Details={Show.Details}
+            Details={show.Details}
           />
         ))}
       </div>
